@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | Maryam Shahrukh - Clinical Nutritionist</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="services.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- ====================== ANIMATED BACKGROUND ====================== -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-orb orb-4"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- ====================== FLOATING ACTION BUTTONS ====================== -->
+    <div class="fab-container">
+        <div class="fab ai-chat-btn" id="aiChatBtn">
+            <i class="fas fa-robot"></i>
+            <span class="fab-tooltip">Ask AI Assistant</span>
+        </div>
+        <div class="fab quick-contact-btn" id="quickContactBtn">
+            <i class="fas fa-headset"></i>
+            <span class="fab-tooltip">Quick Contact</span>
+        </div>
+        <a href="https://wa.me/923209758905" class="fab whatsapp-fab" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="fab-tooltip">WhatsApp</span>
+            <span class="pulse-ring"></span>
+        </a>
+    </div>
+
+    <!-- ====================== AI CHAT MODAL ====================== -->
+    <div class="ai-modal" id="aiModal">
+        <div class="ai-modal-content">
+            <div class="ai-modal-header">
+                <div class="ai-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="ai-title">
+                    <h3>Nutrition AI Assistant</h3>
+                    <p>Ask me anything about nutrition</p>
+                </div>
+                <button class="ai-close-btn" id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message bot-message">
+                    <div class="message-content">
+                        <p>👋 Hello! I'm Maryam's AI assistant. I can help you with nutrition questions, diet plans, or booking information. What would you like to know?</p>
+                    </div>
+                    <span class="message-time">Just now</span>
+                </div>
+            </div>
+            <div class="ai-chat-footer">
+                <input type="text" id="aiUserInput" placeholder="Type your question..." autocomplete="off">
+                <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="ai-suggestions">
+                <button class="suggestion-chip">PCOS diet tips</button>
+                <button class="suggestion-chip">Weight loss plan</button>
+                <button class="suggestion-chip">Book appointment</button>
+                <button class="suggestion-chip">Diabetes management</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================== QUICK CONTACT MODAL ====================== -->
+    <div class="quick-contact-modal" id="quickContactModal">
+        <div class="quick-contact-content">
+            <div class="quick-contact-header">
+                <h3>Quick Contact</h3>
+                <button class="quick-close-btn" id="quickCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="quick-contact-body">
+                <p>Get in touch instantly through any of these channels:</p>
+                <div class="quick-contact-options">
+                    <a href="https://wa.me/923209758905" class="quick-option whatsapp-option" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="tel:+923209758905" class="quick-option phone-option">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <a href="mailto:dnmaryamshahrukh@gmail.com" class="quick-option email-option">
+                        <i class="far fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="#" class="quick-option instagram-option">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram DM</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================== NAVIGATION ====================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo" data-aos="fade-right" data-aos-duration="1000">
+                <a href="index.html">
+                    <span class="logo-text">Maryam Shahrukh</span>
+                    <span class="logo-sub">Clinical Nutritionist</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li data-aos="fade-down" data-aos-delay="100"><a href="index.html">Home</a></li>
+                    <li data-aos="fade-down" data-aos-delay="200"><a href="services.html" class="active">Services</a></li>
+                    <li data-aos="fade-down" data-aos-delay="300"><a href="appointment.html">Appointment</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <a href="#contact" class="nav-contact-btn">Contact</a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====================== PAGE HEADER ====================== -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <h1>Our Services</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Services</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== SERVICES SECTION ====================== -->
+    <section class="services-page" id="services">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">What I Offer</span>
+                <h2 class="section-title">Nutrition & Wellness Services</h2>
+                <p class="section-description">Personalized nutrition plans tailored to your unique needs and goals</p>
+            </div>
+            
+            <div class="services-grid" id="servicesGrid">
+                <!-- Service 1 -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="service-badge">Popular</div>
+                    <div class="service-icon">
+                        <i class="fas fa-weight-scale"></i>
+                    </div>
+                    <h3>Weight Management</h3>
+                    <p class="service-description">Personalized weight loss or gain plans based on your metabolism, lifestyle, and preferences.</p>
+                    <div class="service-features">
+                        <div class="feature"><i class="fas fa-check"></i> Custom meal plan</div>
+                        <div class="feature"><i class="fas fa-check"></i> Weekly check-ins</div>
+                        <div class="feature"><i class="fas fa-check"></i> Progress tracking</div>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">PKR 3,500</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <a href="appointment.html" class="btn btn-primary service-btn">Book Now</a>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="service-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3>PCOS/PCOD Management</h3>
+                    <p class="service-description">Specialized diet plans to balance hormones, manage symptoms, and improve fertility.</p>
+                    <div class="service-features">
+                        <div class="feature"><i class="fas fa-check"></i> Hormone balancing diet</div>
+                        <div class="feature"><i class="fas fa-check"></i> Symptom management</div>
+                        <div class="feature"><i class="fas fa-check"></i> Lifestyle guidance</div>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">PKR 4,000</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <a href="appointment.html" class="btn btn-primary service-btn">Book Now</a>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="service-badge">Best Seller</div>
+                    <div class="service-icon">
+                        <i class="fas fa-droplet"></i>
+                    </div>
+                    <h3>Diabetes Management</h3>
+                    <p class="service-description">Evidence-based nutrition plans to control blood sugar and prevent complications.</p>
+                    <div class="service-features">
+                        <div class="feature"><i class="fas fa-check"></i> Glycemic index optimization</div>
+                        <div class="feature"><i class="fas fa-check"></i> Blood sugar tracking</div>
+                        <div class="feature"><i class="fas fa-check"></i> Medication coordination</div>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">PKR 4,000</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <a href="appointment.html" class="btn btn-primary service-btn">Book Now</a>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="300">
+                    <div class="service-icon">
+                        <i class="fas fa-heart-pulse"></i>
+                    </div>
+                    <h3>Heart Health</h3>
+                    <p class="service-description">Cardiac-friendly nutrition to manage cholesterol, blood pressure, and heart health.</p>
+                    <div class="service-features">
+                        <div class="feature"><i class="fas fa-check"></i> Cholesterol management</div>
+                        <div class="feature"><i class="fas fa-check"></i> Low-sodium plans</div>
+                        <div class="feature"><i class="fas fa-check"></i> Heart-healthy recipes</div>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">PKR 3,800</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <a href="appointment.html" class="btn btn-primary service-btn">Book Now</a>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="400">
+                    <div class="service-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3>Prenatal Nutrition</h3>
+                    <p class="service-description">Essential nutrition guidance for healthy pregnancy and optimal fetal development.</p>
+                    <div class="service-features">
+                        <div class="feature"><i class="fas fa-check"></i> Trimester-specific plans</div>
+                        <div class="feature"><i class="fas fa-check"></i> Supplement guidance</div>
+                        <div class="feature"><i class="fas fa-check"></i> Postpartum support</div>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">PKR 4,500</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <a href="appointment.html" class="btn btn-primary service-btn">Book Now</a>
+                </div>
+                
+                <!-- Service 6 -->
+                <div class="service-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="500">
+                    <div class="service-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Gut Health</h3>
+                    <p class="service-description">Digestive wellness through microbiome-friendly nutrition and lifestyle modifications.</p>
+                    <div class="service-features">
+                        <div class="feature"><i class="fas fa-check"></i> Digestive healing</div>
+                        <div class="feature"><i class="fas fa-check"></i> Food intolerance testing</div>
+                        <div class="feature"><i class="fas fa-check"></i> Probiotic guidance</div>
+                    </div>
+                    <div class="service-price">
+                        <span class="price">PKR 3,800</span>
+                        <span class="period">/month</span>
+                    </div>
+                    <a href="appointment.html" class="btn btn-primary service-btn">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== ABOUT PREVIEW SECTION ====================== -->
+    <section class="about-preview">
+        <div class="container">
+            <div class="about-preview-wrapper" data-aos="zoom-in">
+                <div class="about-preview-image">
+                    <img src="images/dietitian-maryam.png" alt="Dietitian Maryam Shahrukh">
+                </div>
+                <div class="about-preview-content">
+                    <span class="about-subtitle">Why Choose Me</span>
+                    <h2>About Dietitian Maryam</h2>
+                    <p>I am a qualified and passionate clinical nutritionist dedicated to improving lives through healthy and sustainable dietary habits. My approach combines scientific knowledge with compassionate guidance to help you achieve your healthiest self.</p>
+                    <div class="about-preview-features">
+                        <div class="feature-item">
+                            <i class="fas fa-certificate"></i>
+                            <div>
+                                <h4>Certified Professional</h4>
+                                <p>MPhil Nutrition & Clinical Certification</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-clock"></i>
+                            <div>
+                                <h4>8+ Years Experience</h4>
+                                <p>Helping clients achieve real results</p>
+                            </div>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-heart"></i>
+                            <div>
+                                <h4>500+ Happy Clients</h4>
+                                <p>Trusted by clients worldwide</p>
+                            </div>
+                        </div>
+                    </div>
+                    <a href="#faq" class="btn btn-outline">Learn More About Me</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== REVIEWS SECTION ====================== -->
+    <section class="reviews" id="reviews">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Testimonials</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+                <p class="section-description">Real stories from real people who transformed their health</p>
+            </div>
+            
+            <div class="reviews-grid" id="reviewsGrid">
+                <!-- Review 1 -->
+                <div class="review-card" data-aos="fade-up" data-aos-duration="1000">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"Maryam's PCOS diet plan changed my life. My periods are regular now, I've lost 12 kg, and my energy levels are through the roof. She really understands women's health issues."</p>
+                    <div class="reviewer">
+                        <div class="reviewer-image">
+                            <img src="images/client1.jpg" alt="Sarah Khan" onerror="this.src='https://via.placeholder.com/60x60'">
+                        </div>
+                        <div class="reviewer-info">
+                            <h4>Sarah Khan</h4>
+                            <p>PCOS Client, 6 months</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="review-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="100">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"After struggling with diabetes for years, Maryam helped me understand how to manage my blood sugar through diet. My HbA1c dropped from 8.5 to 6.2 in just 4 months!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-image">
+                            <img src="images/client2.jpg" alt="Ahmed Raza" onerror="this.src='https://via.placeholder.com/60x60'">
+                        </div>
+                        <div class="reviewer-info">
+                            <h4>Ahmed Raza</h4>
+                            <p>Diabetes Client, 4 months</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="review-card" data-aos="fade-up" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="review-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="review-text">"I was underweight my whole life. Maryam created a personalized weight gain plan that actually worked! I gained 8 kg of healthy weight in 3 months. Highly recommended!"</p>
+                    <div class="reviewer">
+                        <div class="reviewer-image">
+                            <img src="images/client3.jpg" alt="Fatima Ali" onerror="this.src='https://via.placeholder.com/60x60'">
+                        </div>
+                        <div class="reviewer-info">
+                            <h4>Fatima Ali</h4>
+                            <p>Weight Gain Client, 3 months</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== HAPPY CUSTOMERS SECTION ====================== -->
+    <section class="happy-customers">
+        <div class="container">
+            <div class="customers-wrapper" data-aos="fade-up">
+                <h2>Join 500+ Happy Customers</h2>
+                <p>Who have transformed their health with personalized nutrition plans</p>
+                
+                <div class="customer-stats-grid">
+                    <div class="customer-stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Clients Served</span>
+                    </div>
+                    <div class="customer-stat">
+                        <span class="stat-number">95%</span>
+                        <span class="stat-label">Success Rate</span>
+                    </div>
+                    <div class="customer-stat">
+                        <span class="stat-number">50,000+</span>
+                        <span class="stat-label">Consultation Hours</span>
+                    </div>
+                    <div class="customer-stat">
+                        <span class="stat-number">4.9/5</span>
+                        <span class="stat-label">Client Rating</span>
+                    </div>
+                </div>
+                
+                <div class="customer-avatars">
+                    <div class="avatar-group">
+                        <img src="images/avatar1.jpg" alt="Client" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <img src="images/avatar2.jpg" alt="Client" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <img src="images/avatar3.jpg" alt="Client" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <img src="images/avatar4.jpg" alt="Client" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <img src="images/avatar5.jpg" alt="Client" onerror="this.src='https://via.placeholder.com/50x50'">
+                        <span class="avatar-more">+200</span>
+                    </div>
+                    <p>Trusted by clients worldwide</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FAQ SECTION ====================== -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Common Questions</span>
+                <h2 class="section-title">Frequently Asked Questions</h2>
+                <p class="section-description">Find answers to common queries about our services</p>
+            </div>
+            
+            <div class="faq-grid" id="faqGrid">
+                <!-- FAQ items will be loaded dynamically via JS -->
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>How do I book a service?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can book any service by visiting our Appointment page, calling directly at +92 320 9758905, or sending a message on WhatsApp. We'll schedule your initial consultation within 24 hours.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <h3>What's included in the service packages?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Each service package includes: initial consultation, personalized meal plan, weekly follow-ups, progress tracking, WhatsApp support, and adjustments as needed. Monthly packages include 4 sessions.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <h3>Do you offer refunds?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>We don't offer refunds on services already rendered. However, if you're not satisfied after the first session, we can adjust your plan or offer a partial refund. Your satisfaction is our priority.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <h3>How long is each consultation?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Initial consultations are 60 minutes. Follow-up sessions are 30 minutes. Online consultations are the same duration via video call.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question">
+                        <h3>Do you accept insurance?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Currently, we don't accept insurance directly. However, we can provide receipts that you can submit to your insurance provider for potential reimbursement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== NEWSLETTER SECTION ====================== -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-wrapper" data-aos="zoom-in">
+                <div class="newsletter-content">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get weekly nutrition tips, healthy recipes, and exclusive offers directly in your inbox.</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="privacyPolicy" required>
+                        <label for="privacyPolicy">I agree to the privacy policy and terms of service</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info" data-aos="fade-right">
+                    <div class="footer-logo">
+                        <span class="logo-text">Maryam Shahrukh</span>
+                        <span class="logo-sub">Clinical Nutritionist</span>
+                    </div>
+                    <p>Helping you take control of your health through personalized diet plans designed for weight loss, weight gain, PCOS, diabetes, and overall wellness.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links" data-aos="fade-up">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="appointment.html">Appointment</a></li>
+                        <li><a href="index.html#blog">Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#services">Weight Management</a></li>
+                        <li><a href="#services">PCOS/PCOD</a></li>
+                        <li><a href="#services">Diabetes Management</a></li>
+                        <li><a href="#services">Gut Health</a></li>
+                        <li><a href="#services">Prenatal Nutrition</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact" data-aos="fade-left">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+923209758905">+92 320 9758905</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:dnmaryamshahrukh@gmail.com">dnmaryamshahrukh@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Lahore, Pakistan (Online Worldwide)</span></li>
+                    </ul>
+                    <div class="footer-hours">
+                        <p><i class="far fa-clock"></i> Mon-Fri: 9am - 8pm</p>
+                        <p><i class="far fa-clock"></i> Sat: 10am - 4pm</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dietitian Maryam Shahrukh. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="services.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>

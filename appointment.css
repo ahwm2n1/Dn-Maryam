@@ -1,0 +1,745 @@
+/* ====================== APPOINTMENT PAGE STYLING ====================== */
+/* This file contains specific styles for appointment.html */
+
+/* ====================== APPOINTMENT SECTION ====================== */
+.appointment-section {
+    padding: 4rem 0 6rem;
+    position: relative;
+}
+
+.appointment-wrapper {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+/* ====================== APPOINTMENT FORM STYLING ====================== */
+.appointment-form-container {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+    border: 1px solid rgba(193, 123, 76, 0.2);
+    transition: all 0.3s ease;
+}
+
+.appointment-form-container:hover {
+    box-shadow: 0 30px 50px -15px rgba(193, 123, 76, 0.25);
+}
+
+.form-header {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.form-subtitle {
+    display: inline-block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c17b4c;
+    margin-bottom: 0.5rem;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.form-subtitle::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #c17b4c, transparent);
+}
+
+.form-header h2 {
+    font-size: 2.2rem;
+    color: #1e1e2f;
+    margin-bottom: 0.75rem;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.form-header p {
+    color: #666;
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Form Elements */
+.appointment-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-row {
+    width: 100%;
+}
+
+.form-row.double {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.form-group {
+    position: relative;
+    margin-bottom: 0.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #444;
+    font-size: 0.9rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 0.9rem 1rem 0.9rem 2.8rem;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: white;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.form-group textarea {
+    padding-left: 1rem;
+    resize: vertical;
+    min-height: 100px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #c17b4c;
+    box-shadow: 0 0 0 3px rgba(193, 123, 76, 0.1);
+}
+
+.input-icon {
+    position: absolute;
+    left: 1rem;
+    top: 2.7rem;
+    color: #c17b4c;
+    font-size: 1rem;
+    opacity: 0.7;
+}
+
+/* Radio & Checkbox Styling */
+.radio-group {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 0;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    color: #555;
+    position: relative;
+}
+
+.radio-label input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom {
+    border-color: #c17b4c;
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom::after {
+    content: '';
+    width: 10px;
+    height: 10px;
+    background: #c17b4c;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #555;
+    position: relative;
+}
+
+.checkbox-label input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkbox-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
+    background: #c17b4c;
+    border-color: #c17b4c;
+}
+
+.checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+    content: '\f00c';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    color: white;
+    font-size: 0.7rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.checkbox-label a {
+    color: #c17b4c;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.checkbox-label a:hover {
+    text-decoration: underline;
+}
+
+/* Submit Button */
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem;
+    font-size: 1.1rem;
+    margin-top: 1rem;
+    background: linear-gradient(135deg, #c17b4c, #9e5c32);
+    border: none;
+    color: white;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px -8px rgba(193, 123, 76, 0.4);
+}
+
+.submit-btn i {
+    font-size: 1.2rem;
+}
+
+/* Form Notice */
+.form-notice {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: rgba(193, 123, 76, 0.08);
+    padding: 1rem;
+    border-radius: 12px;
+    margin-top: 1rem;
+    border-left: 3px solid #c17b4c;
+}
+
+.form-notice i {
+    color: #c17b4c;
+    font-size: 1.2rem;
+}
+
+.form-notice p {
+    color: #666;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ====================== APPOINTMENT INFO CARDS ====================== */
+.appointment-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 24px;
+    padding: 2rem;
+    border: 1px solid rgba(193, 123, 76, 0.15);
+    box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -12px rgba(193, 123, 76, 0.25);
+    border-color: #c17b4c;
+}
+
+.info-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #1e1e2f;
+    font-family: 'Cormorant Garamond', serif;
+    position: relative;
+    padding-bottom: 0.75rem;
+}
+
+.info-card h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 2px;
+    background: linear-gradient(90deg, #c17b4c, transparent);
+}
+
+/* Info List */
+.info-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.info-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(193, 123, 76, 0.1), rgba(193, 123, 76, 0.2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #c17b4c;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.info-item:hover .info-icon {
+    background: linear-gradient(135deg, #c17b4c, #9e5c32);
+    color: white;
+    transform: scale(1.1);
+}
+
+.info-content {
+    flex: 1;
+}
+
+.info-label {
+    display: block;
+    font-size: 0.8rem;
+    color: #999;
+    margin-bottom: 0.25rem;
+}
+
+.info-value {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.info-value a {
+    color: #333;
+    text-decoration: none;
+}
+
+.info-value a:hover {
+    color: #c17b4c;
+}
+
+/* Hours List */
+.hours-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.hours-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.5rem 0;
+    border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.hours-item:last-child {
+    border-bottom: none;
+}
+
+.day {
+    font-weight: 500;
+    color: #555;
+}
+
+.time {
+    color: #c17b4c;
+    font-weight: 600;
+}
+
+.time.closed {
+    color: #f44336;
+}
+
+.hours-note {
+    margin-top: 1rem;
+    font-size: 0.85rem;
+    color: #999;
+    font-style: italic;
+}
+
+/* Location */
+.location-info {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.map-placeholder {
+    width: 100%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin-top: 0.5rem;
+}
+
+.map-placeholder iframe {
+    display: block;
+    transition: all 0.3s ease;
+}
+
+.map-placeholder:hover iframe {
+    filter: brightness(1.05);
+}
+
+/* Emergency Note */
+.emergency-note {
+    background: linear-gradient(135deg, rgba(193, 123, 76, 0.1), rgba(193, 123, 76, 0.15));
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: 1px solid rgba(193, 123, 76, 0.3);
+    backdrop-filter: blur(5px);
+}
+
+.emergency-note i {
+    font-size: 2rem;
+    color: #c17b4c;
+}
+
+.emergency-note h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.25rem;
+    color: #1e1e2f;
+}
+
+.emergency-note p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* ====================== RESPONSIVE DESIGN ====================== */
+@media (max-width: 1200px) {
+    .appointment-wrapper {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    
+    .form-header h2 {
+        font-size: 2rem;
+    }
+}
+
+@media (max-width: 992px) {
+    .appointment-wrapper {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        max-width: 700px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .appointment-form-container {
+        padding: 2rem;
+    }
+    
+    .info-card {
+        padding: 1.75rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .appointment-section {
+        padding: 3rem 0 4rem;
+    }
+    
+    .form-row.double {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    
+    .form-header h2 {
+        font-size: 1.8rem;
+    }
+    
+    .radio-group {
+        flex-direction: column;
+        gap: 0.75rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1.3rem;
+    }
+    
+    .emergency-note {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .hours-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .appointment-form-container {
+        padding: 1.5rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.5rem;
+    }
+    
+    .info-card {
+        padding: 1.25rem;
+    }
+    
+    .info-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .info-content {
+        text-align: center;
+    }
+    
+    .info-card h3::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .info-card h3 {
+        text-align: center;
+    }
+}
+
+/* ====================== ANIMATIONS ====================== */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.appointment-form-container {
+    animation: slideInLeft 0.8s ease forwards;
+}
+
+.appointment-info {
+    animation: slideInRight 0.8s ease forwards;
+}
+
+/* ====================== FORM VALIDATION STYLES ====================== */
+.form-group input:invalid:not(:placeholder-shown),
+.form-group select:invalid:not(:placeholder-shown) {
+    border-color: #f44336;
+}
+
+.form-group input:invalid:not(:placeholder-shown) ~ .input-icon,
+.form-group select:invalid:not(:placeholder-shown) ~ .input-icon {
+    color: #f44336;
+}
+
+.form-group input:valid:not(:placeholder-shown),
+.form-group select:valid:not(:placeholder-shown) {
+    border-color: #4CAF50;
+}
+
+.form-group input:valid:not(:placeholder-shown) ~ .input-icon,
+.form-group select:valid:not(:placeholder-shown) ~ .input-icon {
+    color: #4CAF50;
+}
+
+/* ====================== LOADING STATE ====================== */
+.submit-btn.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+.submit-btn.loading span {
+    visibility: hidden;
+}
+
+.submit-btn.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid white;
+    border-top-color: transparent;
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* ====================== TOOLTIP STYLES ====================== */
+.input-tooltip {
+    position: absolute;
+    right: 1rem;
+    top: 2.7rem;
+    color: #999;
+    cursor: help;
+    font-size: 0.9rem;
+}
+
+.input-tooltip:hover::before {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: 100%;
+    right: 0;
+    background: #333;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    z-index: 10;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* ====================== DATE INPUT CUSTOMIZATION ====================== */
+input[type="date"] {
+    appearance: none;
+    -webkit-appearance: none;
+    color: #333;
+    font-family: 'Montserrat', sans-serif;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    background: transparent;
+    color: #c17b4c;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator:hover {
+    opacity: 1;
+}
+
+/* ====================== SELECT DROPDOWN CUSTOMIZATION ====================== */
+select {
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23c17b4c'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1.5rem;
+    padding-right: 2.5rem !important;
+}
+
+/* ====================== SUCCESS MESSAGE ====================== */
+.appointment-success {
+    text-align: center;
+    padding: 2rem;
+}
+
+.appointment-success i {
+    font-size: 4rem;
+    color: #4CAF50;
+    margin-bottom: 1rem;
+}
+
+.appointment-success h3 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    color: #1e1e2f;
+}
+
+.appointment-success p {
+    color: #666;
+    margin-bottom: 2rem;
+}

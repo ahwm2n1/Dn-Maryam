@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Appointment | Maryam Shahrukh - Clinical Nutritionist</title>
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- AOS Animation -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="appointment.css">
+</head>
+<body>
+    <!-- ====================== ANIMATED BACKGROUND ====================== -->
+    <div class="animated-bg">
+        <div class="gradient-orb orb-1"></div>
+        <div class="gradient-orb orb-2"></div>
+        <div class="gradient-orb orb-3"></div>
+        <div class="gradient-orb orb-4"></div>
+        <div class="noise-overlay"></div>
+    </div>
+
+    <!-- ====================== FLOATING ACTION BUTTONS ====================== -->
+    <div class="fab-container">
+        <div class="fab ai-chat-btn" id="aiChatBtn">
+            <i class="fas fa-robot"></i>
+            <span class="fab-tooltip">Ask AI Assistant</span>
+        </div>
+        <div class="fab quick-contact-btn" id="quickContactBtn">
+            <i class="fas fa-headset"></i>
+            <span class="fab-tooltip">Quick Contact</span>
+        </div>
+        <a href="https://wa.me/923209758905" class="fab whatsapp-fab" target="_blank">
+            <i class="fab fa-whatsapp"></i>
+            <span class="fab-tooltip">WhatsApp</span>
+            <span class="pulse-ring"></span>
+        </a>
+    </div>
+
+    <!-- ====================== AI CHAT MODAL ====================== -->
+    <div class="ai-modal" id="aiModal">
+        <div class="ai-modal-content">
+            <div class="ai-modal-header">
+                <div class="ai-avatar">
+                    <i class="fas fa-robot"></i>
+                </div>
+                <div class="ai-title">
+                    <h3>Nutrition AI Assistant</h3>
+                    <p>Ask me anything about nutrition</p>
+                </div>
+                <button class="ai-close-btn" id="aiCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="ai-chat-body" id="aiChatBody">
+                <div class="ai-message bot-message">
+                    <div class="message-content">
+                        <p>👋 Hello! I'm Maryam's AI assistant. I can help you with nutrition questions, diet plans, or booking information. What would you like to know?</p>
+                    </div>
+                    <span class="message-time">Just now</span>
+                </div>
+            </div>
+            <div class="ai-chat-footer">
+                <input type="text" id="aiUserInput" placeholder="Type your question..." autocomplete="off">
+                <button id="aiSendBtn"><i class="fas fa-paper-plane"></i></button>
+            </div>
+            <div class="ai-suggestions">
+                <button class="suggestion-chip">PCOS diet tips</button>
+                <button class="suggestion-chip">Weight loss plan</button>
+                <button class="suggestion-chip">Book appointment</button>
+                <button class="suggestion-chip">Diabetes management</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================== QUICK CONTACT MODAL ====================== -->
+    <div class="quick-contact-modal" id="quickContactModal">
+        <div class="quick-contact-content">
+            <div class="quick-contact-header">
+                <h3>Quick Contact</h3>
+                <button class="quick-close-btn" id="quickCloseBtn"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="quick-contact-body">
+                <p>Get in touch instantly through any of these channels:</p>
+                <div class="quick-contact-options">
+                    <a href="https://wa.me/923209758905" class="quick-option whatsapp-option" target="_blank">
+                        <i class="fab fa-whatsapp"></i>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="tel:+923209758905" class="quick-option phone-option">
+                        <i class="fas fa-phone-alt"></i>
+                        <span>Call Now</span>
+                    </a>
+                    <a href="mailto:dnmaryamshahrukh@gmail.com" class="quick-option email-option">
+                        <i class="far fa-envelope"></i>
+                        <span>Email</span>
+                    </a>
+                    <a href="https://www.instagram.com/dtmar_i?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="quick-option instagram-option">
+                        <i class="fab fa-instagram"></i>
+                        <span>Instagram DM</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ====================== NAVIGATION ====================== -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="logo" data-aos="fade-right" data-aos-duration="1000">
+                <a href="index.html">
+                    <span class="logo-text">Maryam Shahrukh</span>
+                    <span class="logo-sub">Clinical Nutritionist</span>
+                </a>
+            </div>
+            
+            <div class="nav-menu" id="navMenu">
+                <ul>
+                    <li data-aos="fade-down" data-aos-delay="100"><a href="index.html">Home</a></li>
+                    <li data-aos="fade-down" data-aos-delay="200"><a href="services.html">Services</a></li>
+                    <li data-aos="fade-down" data-aos-delay="300"><a href="appointment.html" class="active">Appointment</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-right">
+                <a href="#contact" class="nav-contact-btn">Contact</a>
+                <div class="nav-toggle" id="navToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ====================== PAGE HEADER ====================== -->
+    <section class="page-header">
+        <div class="container">
+            <div class="page-header-content" data-aos="fade-up">
+                <h1>Book an Appointment</h1>
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>Appointment</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== APPOINTMENT SECTION ====================== -->
+    <section class="appointment-section" id="appointment">
+        <div class="container">
+            <div class="appointment-wrapper">
+                <!-- Left Column - Appointment Form -->
+                <div class="appointment-form-container" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="form-header">
+                        <span class="form-subtitle">Book Your Session</span>
+                        <h2>Schedule a Consultation</h2>
+                        <p>Fill out the form below and I'll get back to you within 2-3 hours to confirm your appointment.</p>
+                    </div>
+                    
+                    <form class="appointment-form" id="appointmentForm">
+                        <!-- Personal Information -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required>
+                                <i class="fas fa-user input-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                                <i class="fas fa-envelope input-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" name="phone" placeholder="+92 300 1234567" required>
+                                <i class="fas fa-phone-alt input-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Appointment Details -->
+                        <div class="form-row double">
+                            <div class="form-group">
+                                <label for="appointmentDate">Preferred Date *</label>
+                                <input type="date" id="appointmentDate" name="appointmentDate" required min="">
+                                <i class="fas fa-calendar-alt input-icon"></i>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="appointmentTime">Preferred Time *</label>
+                                <select id="appointmentTime" name="appointmentTime" required>
+                                    <option value="" disabled selected>Select time slot</option>
+                                    <option value="09:00 AM">09:00 AM</option>
+                                    <option value="10:00 AM">10:00 AM</option>
+                                    <option value="11:00 AM">11:00 AM</option>
+                                    <option value="12:00 PM">12:00 PM</option>
+                                    <option value="02:00 PM">02:00 PM</option>
+                                    <option value="03:00 PM">03:00 PM</option>
+                                    <option value="04:00 PM">04:00 PM</option>
+                                    <option value="05:00 PM">05:00 PM</option>
+                                    <option value="06:00 PM">06:00 PM</option>
+                                </select>
+                                <i class="fas fa-clock input-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Service Selection -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="service">Select Service *</label>
+                                <select id="service" name="service" required>
+                                    <option value="" disabled selected>Choose a service</option>
+                                    <option value="Weight Management">Weight Management</option>
+                                    <option value="PCOS/PCOD Management">PCOS/PCOD Management</option>
+                                    <option value="Diabetes Management">Diabetes Management</option>
+                                    <option value="Heart Health">Heart Health</option>
+                                    <option value="Prenatal Nutrition">Prenatal Nutrition</option>
+                                    <option value="Gut Health">Gut Health</option>
+                                    <option value="General Consultation">General Consultation</option>
+                                </select>
+                                <i class="fas fa-stethoscope input-icon"></i>
+                            </div>
+                        </div>
+                        
+                        <!-- Consultation Type -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>Consultation Type *</label>
+                                <div class="radio-group">
+                                    <label class="radio-label">
+                                        <input type="radio" name="consultationType" value="in-person" checked>
+                                        <span class="radio-custom"></span>
+                                        In-Person
+                                    </label>
+                                    <label class="radio-label">
+                                        <input type="radio" name="consultationType" value="video">
+                                        <span class="radio-custom"></span>
+                                        Video Call (Zoom/WhatsApp)
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Additional Notes -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="notes">Additional Notes</label>
+                                <textarea id="notes" name="notes" rows="4" placeholder="Tell me about your health goals, concerns, or any specific requirements..."></textarea>
+                            </div>
+                        </div>
+                        
+                        <!-- Terms and Conditions -->
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="terms" name="terms" required>
+                                    <span class="checkbox-custom"></span>
+                                    I agree to the <a href="#">terms and conditions</a> and <a href="#">privacy policy</a> *
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="form-row">
+                            <button type="submit" class="btn btn-primary submit-btn" id="submitAppointment">
+                                <span>Book Appointment</span>
+                                <i class="fas fa-calendar-check"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="form-notice">
+                            <i class="fas fa-info-circle"></i>
+                            <p>Your appointment details will be sent via WhatsApp for confirmation. You'll receive a confirmation within 2-3 hours.</p>
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Right Column - Contact Info & Details -->
+                <div class="appointment-info" data-aos="fade-left" data-aos-duration="1000">
+                    <!-- Quick Contact Card -->
+                    <div class="info-card">
+                        <h3>Quick Contact</h3>
+                        <div class="info-list">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">WhatsApp</span>
+                                    <a href="https://wa.me/923209758905" class="info-value">+92 320 9758905</a>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-phone-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">Call Us</span>
+                                    <a href="tel:+923209758905" class="info-value">+92 320 9758905</a>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="far fa-envelope"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">Email</span>
+                                    <a href="mailto:dnmaryamshahrukh@gmail.com" class="info-value">dnmaryamshahrukh@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fab fa-instagram"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">Instagram</span>
+                                    <span class="info-value">@dietitian.maryam</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Working Hours Card -->
+                    <div class="info-card">
+                        <h3>Working Hours</h3>
+                        <div class="hours-list">
+                            <div class="hours-item">
+                                <span class="day">Monday - Friday</span>
+                                <span class="time">9:00 AM - 8:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Saturday</span>
+                                <span class="time">10:00 AM - 4:00 PM</span>
+                            </div>
+                            <div class="hours-item">
+                                <span class="day">Sunday</span>
+                                <span class="time closed">Closed</span>
+                            </div>
+                        </div>
+                        <p class="hours-note">*Online consultations available worldwide</p>
+                    </div>
+                    
+                    <!-- Location Card -->
+                    <div class="info-card">
+                        <h3>Location</h3>
+                        <div class="location-info">
+                            <div class="info-item">
+                                <div class="info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <div class="info-content">
+                                    <span class="info-label">Address</span>
+                                    <span class="info-value">Lahore, Pakistan (Online Worldwide)</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Simple Map Placeholder -->
+                            <div class="map-placeholder">
+                                <iframe 
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d217811.93874298033!2d74.1942511150968!3d31.483196906260815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39190483e58107d9%3A0xc23abe6ccc7e2462!2sLahore%2C%20Punjab%2C%20Pakistan!5e0!3m2!1sen!2s!4v1709736000000!5m2!1sen!2s" 
+                                    width="100%" 
+                                    height="200" 
+                                    style="border:0; border-radius: 12px;" 
+                                    allowfullscreen="" 
+                                    loading="lazy">
+                                </iframe>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Emergency Note -->
+                    <div class="emergency-note">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h4>Need urgent consultation?</h4>
+                            <p>For urgent queries, please WhatsApp or call directly. I typically respond within 30 minutes during working hours.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FAQ SECTION ====================== -->
+    <section class="faq" id="faq">
+        <div class="container">
+            <div class="section-header" data-aos="fade-up">
+                <span class="section-subtitle">Common Questions</span>
+                <h2 class="section-title">Appointment FAQs</h2>
+                <p class="section-description">Find answers to common questions about booking appointments</p>
+            </div>
+            
+            <div class="faq-grid" id="faqGrid">
+                <!-- FAQ Item 1 -->
+                <div class="faq-item" data-aos="fade-up">
+                    <div class="faq-question">
+                        <h3>How do I confirm my appointment?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>After submitting the form, you'll receive a WhatsApp message from me within 2-3 hours confirming your appointment. Please ensure your WhatsApp number is correct.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 2 -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="100">
+                    <div class="faq-question">
+                        <h3>What is the cancellation policy?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>You can cancel or reschedule up to 24 hours before your appointment without any charge. Late cancellations may incur a 50% fee.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 3 -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="200">
+                    <div class="faq-question">
+                        <h3>Do I need to prepare anything for the consultation?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>For the first consultation, please have your medical history, current medications (if any), and a 3-day food diary ready. This helps me create a more personalized plan for you.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 4 -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="300">
+                    <div class="faq-question">
+                        <h3>How long is each consultation?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>Initial consultations are 60 minutes long. Follow-up sessions are 30 minutes. Video consultations are the same duration.</p>
+                    </div>
+                </div>
+                
+                <!-- FAQ Item 5 -->
+                <div class="faq-item" data-aos="fade-up" data-aos-delay="400">
+                    <div class="faq-question">
+                        <h3>What payment methods do you accept?</h3>
+                        <span class="faq-toggle"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div class="faq-answer">
+                        <p>I accept JazzCash, EasyPaisa, bank transfer, and cash for in-person sessions. Online payments can be made via bank transfer or payment links shared on WhatsApp.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== NEWSLETTER SECTION ====================== -->
+    <section class="newsletter" id="newsletter">
+        <div class="container">
+            <div class="newsletter-wrapper" data-aos="zoom-in">
+                <div class="newsletter-content">
+                    <h3>Subscribe to Our Newsletter</h3>
+                    <p>Get weekly nutrition tips, healthy recipes, and exclusive offers directly in your inbox.</p>
+                </div>
+                <form class="newsletter-form" id="newsletterForm">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </div>
+                    <div class="form-checkbox">
+                        <input type="checkbox" id="privacyPolicy" required>
+                        <label for="privacyPolicy">I agree to the privacy policy and terms of service</label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ====================== FOOTER ====================== -->
+    <footer class="footer" id="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-info" data-aos="fade-right">
+                    <div class="footer-logo">
+                        <span class="logo-text">Maryam Shahrukh</span>
+                        <span class="logo-sub">Clinical Nutritionist</span>
+                    </div>
+                    <p>Helping you take control of your health through personalized diet plans designed for weight loss, weight gain, PCOS, diabetes, and overall wellness.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-links" data-aos="fade-up">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="appointment.html">Appointment</a></li>
+                        <li><a href="index.html#blog">Blog</a></li>
+                        <li><a href="#faq">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-links" data-aos="fade-up" data-aos-delay="100">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="services.html">Weight Management</a></li>
+                        <li><a href="services.html">PCOS/PCOD</a></li>
+                        <li><a href="services.html">Diabetes Management</a></li>
+                        <li><a href="services.html">Gut Health</a></li>
+                        <li><a href="services.html">Prenatal Nutrition</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-contact" data-aos="fade-left">
+                    <h4>Contact Us</h4>
+                    <ul>
+                        <li><i class="fas fa-phone-alt"></i> <a href="tel:+923209758905">+92 320 9758905</a></li>
+                        <li><i class="fas fa-envelope"></i> <a href="mailto:dnmaryamshahrukh@gmail.com">dnmaryamshahrukh@gmail.com</a></li>
+                        <li><i class="fas fa-map-marker-alt"></i> <span>Lahore, Pakistan (Online Worldwide)</span></li>
+                    </ul>
+                    <div class="footer-hours">
+                        <p><i class="far fa-clock"></i> Mon-Fri: 9am - 8pm</p>
+                        <p><i class="far fa-clock"></i> Sat: 10am - 4pm</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 Dietitian Maryam Shahrukh. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script src="appointment.js"></script>
+</body>
+</html>
