@@ -705,3 +705,103 @@ window.handleAppointmentSubmit = function(formData) {
 
 // ====================== EXPORT FUNCTIONS FOR OTHER PAGES ======================
 window.showNotification = showNotification;
+// ====================== SCHEMA MARKUP INJECTION ======================
+function injectSchemaMarkup() {
+    // LocalBusiness Schema
+    const localBusinessSchema = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Dietitian Maryam Shahrukh",
+        "image": "https://ahwm2n1.github.io/Dn-Maryam/images/dietitian-maryam.png", // Use your actual image URL
+        "@id": "https://ahwm2n1.github.io/Dn-Maryam",
+        "url": "https://ahwm2n1.github.io/Dn-Maryam/",
+        "telephone": "+92 320 9758905",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lahore",
+            "addressRegion": "Punjab",
+            "addressCountry": "PK"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 31.5204, // Approx for Lahore
+            "longitude": 74.3587
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "20:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "10:00",
+                "closes": "16:00"
+            }
+        ],
+        "sameAs": [
+            "https://www.instagram.com/yourprofile/", // Add your real social links
+            "https://www.facebook.com/yourprofile/"
+        ],
+        "areaServed": {
+            "@type": "City",
+            "name": "Lahore"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Nutrition Services",
+            "itemListElement": [
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Weight Loss Diet Plan"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "PCOS Diet Consultation"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Diabetes Meal Planning"}},
+                {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Holistic Wellness Coaching"}}
+            ]
+        }
+    };
+
+    // FAQ Schema (Dynamically generated from your existing FAQ items)
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqList = [];
+    faqItems.forEach(item => {
+        const questionEl = item.querySelector('.faq-question h3');
+        const answerEl = item.querySelector('.faq-answer p');
+        if (questionEl && answerEl) {
+            faqList.push({
+                "@type": "Question",
+                "name": questionEl.textContent,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": answerEl.textContent
+                }
+            });
+        }
+    });
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqList
+    };
+
+    // Inject schemas
+    const script1 = document.createElement('script');
+    script1.type = 'application/ld+json';
+    script1.textContent = JSON.stringify(localBusinessSchema);
+    document.head.appendChild(script1);
+
+    if (faqList.length > 0) {
+        const script2 = document.createElement('script');
+        script2.type = 'application/ld+json';
+        script2.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(script2);
+    }
+}
+
+// Call this function after the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... your existing init functions ...
+    injectSchemaMarkup(); // Add this line
+});
