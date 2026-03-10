@@ -705,3 +705,182 @@ window.deleteService = function(index) {
     localStorage.setItem('services', JSON.stringify(services));
     location.reload();
 };
+
+// ====================== BOOKING TRACKING ======================
+window.trackServiceBooking = function(serviceName) {
+    // Track for analytics
+    console.log(`Service booked: ${serviceName}`);
+    
+    // Store in localStorage for retargeting
+    localStorage.setItem('lastViewedService', serviceName);
+    localStorage.setItem('serviceInterest', new Date().toISOString());
+    
+    // Show personalized message
+    showNotification(`Great choice! Let's schedule your ${serviceName} consultation.`, 'success');
+    
+    return true;
+};
+
+// Seo Schema//
+
+
+// ====================== SERVICES PAGE SCHEMA MARKUP ======================
+function injectServicesSchema() {
+    // MedicalBusiness + Service Schema
+    const services = [];
+    document.querySelectorAll('.service-card').forEach(card => {
+        const title = card.querySelector('h3')?.textContent || '';
+        const description = card.querySelector('.service-description')?.textContent || '';
+        const priceEl = card.querySelector('.price')?.textContent || 'PKR 3,500';
+        const features = [];
+        card.querySelectorAll('.feature').forEach(f => {
+            features.push(f.textContent.trim());
+        });
+        
+        services.push({
+            "@type": "Service",
+            "name": title,
+            "description": description,
+            "provider": {
+                "@type": "Person",
+                "name": "Maryam Shahrukh",
+                "credential": "Clinical Nutritionist"
+            },
+            "areaServed": {
+                "@type": "City",
+                "name": "Mirpur"
+            },
+            "hasOfferCatalog": {
+                "@type": "OfferCatalog",
+                "name": title,
+                "itemListElement": features.map(f => ({
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": f
+                    }
+                }))
+            },
+            "offers": {
+                "@type": "Offer",
+                "price": priceEl.replace('PKR', '').trim().split('/')[0],
+                "priceCurrency": "PKR",
+                "availability": "https://schema.org/InStock",
+                "validFrom": new Date().toISOString().split('T')[0]
+            }
+        });
+    });
+
+    const serviceSchema = {
+        "@context": "https://schema.org",
+        "@type": "MedicalBusiness",
+        "@id": "https://ahwm2n1.github.io/Dn-Maryam/services.html",
+        "name": "Maryam Shahrukh - Clinical Nutritionist Services",
+        "description": "Professional nutrition and dietetics services in Mirpur specializing in weight management, PCOS, diabetes, and holistic wellness.",
+        "url": "https://ahwm2n1.github.io/Dn-Maryam/services.html",
+        "telephone": "+92 320 9758905",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mirpur",
+            "addressRegion": "Punjab",
+            "addressCountry": "PK"
+        },
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Nutrition Services",
+            "itemListElement": services
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.9",
+            "reviewCount": "500",
+            "bestRating": "5",
+            "worstRating": "1"
+        },
+        "review": [
+            {
+                "@type": "Review",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Sarah Khan"
+                },
+                "reviewBody": "Maryam's PCOS diet plan changed my life. My periods are regular now, I've lost 12 kg."
+            },
+            {
+                "@type": "Review",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Ahmed Raza"
+                },
+                "reviewBody": "My HbA1c dropped from 8.5 to 6.2 in just 4 months with Maryam's diabetes management plan."
+            },
+            {
+                "@type": "Review",
+                "reviewRating": {
+                    "@type": "Rating",
+                    "ratingValue": "5",
+                    "bestRating": "5"
+                },
+                "author": {
+                    "@type": "Person",
+                    "name": "Fatima Ali"
+                },
+                "reviewBody": "I gained 8 kg of healthy weight in 3 months with her personalized weight gain plan."
+            }
+        ]
+    };
+
+    // FAQ Schema
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqList = [];
+    faqItems.forEach(item => {
+        const questionEl = item.querySelector('.faq-question h3');
+        const answerEl = item.querySelector('.faq-answer p');
+        if (questionEl && answerEl) {
+            faqList.push({
+                "@type": "Question",
+                "name": questionEl.textContent,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": answerEl.textContent
+                }
+            });
+        }
+    });
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqList
+    };
+
+    // Inject schemas
+    const script1 = document.createElement('script');
+    script1.type = 'application/ld+json';
+    script1.textContent = JSON.stringify(serviceSchema);
+    document.head.appendChild(script1);
+
+    if (faqList.length > 0) {
+        const script2 = document.createElement('script');
+        script2.type = 'application/ld+json';
+        script2.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(script2);
+    }
+}
+
+// Call this in DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code ...
+    injectServicesSchema(); // Add this line
+});
