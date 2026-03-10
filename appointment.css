@@ -358,6 +358,7 @@
     color: #c17b4c;
     font-size: 1.2rem;
     transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
 .info-item:hover .info-icon {
@@ -368,6 +369,7 @@
 
 .info-content {
     flex: 1;
+    min-width: 0; /* Prevent text overflow */
 }
 
 .info-label {
@@ -383,11 +385,13 @@
     font-weight: 500;
     text-decoration: none;
     transition: color 0.3s ease;
+    word-break: break-word;
 }
 
 .info-value a {
     color: #333;
     text-decoration: none;
+    word-break: break-word;
 }
 
 .info-value a:hover {
@@ -451,6 +455,8 @@
 
 .map-placeholder iframe {
     display: block;
+    width: 100%;
+    height: 200px;
     transition: all 0.3s ease;
 }
 
@@ -473,6 +479,7 @@
 .emergency-note i {
     font-size: 2rem;
     color: #c17b4c;
+    flex-shrink: 0;
 }
 
 .emergency-note h4 {
@@ -523,13 +530,22 @@
         padding: 3rem 0 4rem;
     }
     
-    .form-row.double {
-        grid-template-columns: 1fr;
-        gap: 0;
+    .appointment-form-container {
+        padding: 1.5rem;
+        border-radius: 24px;
     }
     
     .form-header h2 {
         font-size: 1.8rem;
+    }
+    
+    .form-header p {
+        font-size: 0.9rem;
+    }
+    
+    .form-row.double {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
     
     .radio-group {
@@ -537,51 +553,408 @@
         gap: 0.75rem;
     }
     
+    .info-card {
+        padding: 1.5rem;
+    }
+    
     .info-card h3 {
         font-size: 1.3rem;
+        margin-bottom: 1.25rem;
     }
     
     .emergency-note {
         flex-direction: column;
         text-align: center;
+        gap: 0.75rem;
+        padding: 1.25rem;
+    }
+    
+    .emergency-note i {
+        font-size: 2rem;
+    }
+    
+    .emergency-note h4 {
+        font-size: 1rem;
+    }
+    
+    .emergency-note p {
+        font-size: 0.85rem;
     }
     
     .hours-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 0.25rem;
+        flex-direction: row;
+        align-items: center;
+        gap: 0.5rem;
+    }
+    
+    .map-placeholder iframe {
+        height: 180px;
     }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 576px) {
+    .appointment-section {
+        padding: 2.5rem 0 3.5rem;
+    }
+    
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    .appointment-wrapper {
+        gap: 1.5rem;
+        margin-top: 1.5rem;
+    }
+    
     .appointment-form-container {
-        padding: 1.5rem;
+        padding: 1.25rem;
+        border-radius: 20px;
+    }
+    
+    .form-header {
+        margin-bottom: 1.5rem;
+    }
+    
+    .form-subtitle {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
     }
     
     .form-header h2 {
         font-size: 1.5rem;
     }
     
+    .form-header p {
+        font-size: 0.85rem;
+        line-height: 1.5;
+    }
+    
+    .appointment-form {
+        gap: 1rem;
+    }
+    
+    .form-group label {
+        font-size: 0.85rem;
+        margin-bottom: 0.35rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.8rem 1rem 0.8rem 2.5rem;
+        font-size: 0.9rem;
+        border-radius: 10px;
+    }
+    
+    .form-group textarea {
+        padding-left: 0.8rem;
+        min-height: 80px;
+    }
+    
+    .input-icon {
+        left: 0.8rem;
+        top: 2.5rem;
+        font-size: 0.9rem;
+    }
+    
+    .input-tooltip {
+        top: 2.5rem;
+        right: 0.8rem;
+    }
+    
+    .radio-group {
+        gap: 0.5rem;
+    }
+    
+    .radio-label {
+        font-size: 0.85rem;
+    }
+    
+    .checkbox-label {
+        font-size: 0.8rem;
+        align-items: flex-start;
+    }
+    
+    .checkbox-custom {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        margin-top: 2px;
+    }
+    
+    .checkbox-label input[type="checkbox"]:checked + .checkbox-custom::after {
+        font-size: 0.6rem;
+    }
+    
+    .submit-btn {
+        padding: 1rem;
+        font-size: 1rem;
+        margin-top: 0.5rem;
+    }
+    
+    .submit-btn i {
+        font-size: 1rem;
+    }
+    
+    .form-notice {
+        padding: 0.8rem;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+    }
+    
+    .form-notice i {
+        font-size: 1rem;
+    }
+    
+    .form-notice p {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+    
+    .appointment-info {
+        gap: 1rem;
+    }
+    
     .info-card {
         padding: 1.25rem;
-    }
-    
-    .info-item {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .info-content {
-        text-align: center;
-    }
-    
-    .info-card h3::after {
-        left: 50%;
-        transform: translateX(-50%);
+        border-radius: 20px;
     }
     
     .info-card h3 {
-        text-align: center;
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        padding-bottom: 0.5rem;
+    }
+    
+    .info-card h3::after {
+        width: 40px;
+        height: 2px;
+    }
+    
+    .info-list {
+        gap: 1rem;
+    }
+    
+    .info-item {
+        gap: 0.75rem;
+    }
+    
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+    
+    .info-label {
+        font-size: 0.7rem;
+    }
+    
+    .info-value {
+        font-size: 0.9rem;
+    }
+    
+    .hours-item {
+        padding: 0.4rem 0;
+    }
+    
+    .day {
+        font-size: 0.85rem;
+    }
+    
+    .time {
+        font-size: 0.85rem;
+    }
+    
+    .hours-note {
+        font-size: 0.75rem;
+        margin-top: 0.75rem;
+    }
+    
+    .location-info {
+        gap: 1rem;
+    }
+    
+    .map-placeholder {
+        border-radius: 12px;
+    }
+    
+    .map-placeholder iframe {
+        height: 150px;
+    }
+    
+    .emergency-note {
+        padding: 1rem;
+    }
+    
+    .emergency-note i {
+        font-size: 1.5rem;
+    }
+    
+    .emergency-note h4 {
+        font-size: 0.95rem;
+    }
+    
+    .emergency-note p {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .appointment-form-container {
+        padding: 1rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.3rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.7rem 0.8rem 0.7rem 2.2rem;
+        font-size: 0.85rem;
+    }
+    
+    .input-icon {
+        left: 0.7rem;
+        top: 2.3rem;
+        font-size: 0.8rem;
+    }
+    
+    .radio-label {
+        font-size: 0.8rem;
+    }
+    
+    .checkbox-label {
+        font-size: 0.75rem;
+    }
+    
+    .info-card {
+        padding: 1rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1.1rem;
+    }
+    
+    .info-icon {
+        width: 36px;
+        height: 36px;
+        font-size: 0.9rem;
+    }
+    
+    .info-value {
+        font-size: 0.85rem;
+    }
+    
+    .day, .time {
+        font-size: 0.8rem;
+    }
+    
+    .emergency-note h4 {
+        font-size: 0.9rem;
+    }
+    
+    .emergency-note p {
+        font-size: 0.75rem;
+    }
+    
+    .map-placeholder iframe {
+        height: 120px;
+    }
+}
+
+/* iPhone SE and smaller devices */
+@media (max-width: 375px) {
+    .appointment-section {
+        padding: 2rem 0 3rem;
+    }
+    
+    .appointment-form-container {
+        padding: 0.9rem;
+    }
+    
+    .form-header h2 {
+        font-size: 1.2rem;
+    }
+    
+    .form-header p {
+        font-size: 0.8rem;
+    }
+    
+    .form-group label {
+        font-size: 0.8rem;
+    }
+    
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 0.6rem 0.7rem 0.6rem 2rem;
+        font-size: 0.8rem;
+    }
+    
+    .input-icon {
+        left: 0.6rem;
+        top: 2.1rem;
+        font-size: 0.75rem;
+    }
+    
+    .radio-label {
+        font-size: 0.75rem;
+    }
+    
+    .checkbox-label {
+        font-size: 0.7rem;
+    }
+    
+    .submit-btn {
+        padding: 0.9rem;
+        font-size: 0.95rem;
+    }
+    
+    .info-card {
+        padding: 0.9rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1rem;
+    }
+    
+    .info-icon {
+        width: 32px;
+        height: 32px;
+        font-size: 0.8rem;
+    }
+    
+    .info-value {
+        font-size: 0.8rem;
+    }
+    
+    .day, .time {
+        font-size: 0.75rem;
+    }
+    
+    .hours-note {
+        font-size: 0.7rem;
+    }
+}
+
+/* Landscape orientation for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .appointment-wrapper {
+        grid-template-columns: 1fr;
+    }
+    
+    .appointment-form-container,
+    .info-card {
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .map-placeholder iframe {
+        height: 150px;
     }
 }
 
@@ -614,6 +987,13 @@
 
 .appointment-info {
     animation: slideInRight 0.8s ease forwards;
+}
+
+@media (max-width: 768px) {
+    .appointment-form-container,
+    .appointment-info {
+        animation: none;
+    }
 }
 
 /* ====================== FORM VALIDATION STYLES ====================== */
@@ -690,6 +1070,14 @@
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
 
+@media (max-width: 576px) {
+    .input-tooltip {
+        top: 2.5rem;
+        right: 0.8rem;
+        font-size: 0.8rem;
+    }
+}
+
 /* ====================== DATE INPUT CUSTOMIZATION ====================== */
 input[type="date"] {
     appearance: none;
@@ -721,6 +1109,14 @@ select {
     padding-right: 2.5rem !important;
 }
 
+@media (max-width: 576px) {
+    select {
+        background-position: right 0.8rem center;
+        background-size: 1.2rem;
+        padding-right: 2rem !important;
+    }
+}
+
 /* ====================== SUCCESS MESSAGE ====================== */
 .appointment-success {
     text-align: center;
@@ -742,4 +1138,56 @@ select {
 .appointment-success p {
     color: #666;
     margin-bottom: 2rem;
+}
+
+@media (max-width: 576px) {
+    .appointment-success {
+        padding: 1.5rem;
+    }
+    
+    .appointment-success i {
+        font-size: 3rem;
+    }
+    
+    .appointment-success h3 {
+        font-size: 1.5rem;
+    }
+    
+    .appointment-success p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ====================== FIELD ERROR STYLING ====================== */
+.field-error {
+    color: #f44336;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ====================== DATE HINT ====================== */
+.date-hint {
+    display: block;
+    color: #999;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+}
+
+@media (max-width: 576px) {
+    .date-hint {
+        font-size: 0.7rem;
+    }
 }
