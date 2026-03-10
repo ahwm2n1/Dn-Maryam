@@ -686,3 +686,125 @@ appointmentStyles.textContent = `
 `;
 
 document.head.appendChild(appointmentStyles);
+// ====================== APPOINTMENT PAGE SCHEMA MARKUP ======================
+function injectAppointmentSchema() {
+    // MedicalBusiness + LocalBusiness Schema
+    const appointmentSchema = {
+        "@context": "https://schema.org",
+        "@type": ["MedicalBusiness", "LocalBusiness"],
+        "name": "Maryam Shahrukh - Clinical Nutritionist",
+        "image": "https://ahwm2n1.github.io/Dn-Maryam/images/dietitian-maryam.png",
+        "url": "https://ahwm2n1.github.io/Dn-Maryam/appointment.html",
+        "telephone": "+92 320 9758905",
+        "priceRange": "$$",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Lahore",
+            "addressRegion": "Punjab",
+            "addressCountry": "PK"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 31.5204,
+            "longitude": 74.3587
+        },
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "09:00",
+                "closes": "20:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": "Saturday",
+                "opens": "10:00",
+                "closes": "16:00"
+            }
+        ],
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Consultation Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Initial Nutrition Consultation",
+                        "description": "60-minute comprehensive nutrition assessment and personalized diet plan",
+                        "price": "2500",
+                        "priceCurrency": "PKR"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Follow-up Session",
+                        "description": "30-minute follow-up consultation to track progress and adjust plan",
+                        "price": "1500",
+                        "priceCurrency": "PKR"
+                    }
+                }
+            ]
+        },
+        "potentialAction": {
+            "@type": "ReserveAction",
+            "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://ahwm2n1.github.io/Dn-Maryam/appointment.html",
+                "actionPlatform": [
+                    "http://schema.org/DesktopWebPlatform",
+                    "http://schema.org/MobileWebPlatform"
+                ]
+            },
+            "result": {
+                "@type": "Reservation",
+                "name": "Appointment Booking"
+            }
+        }
+    };
+
+    // FAQ Schema for Appointment FAQs
+    const faqItems = document.querySelectorAll('.faq-item');
+    const faqList = [];
+    faqItems.forEach(item => {
+        const questionEl = item.querySelector('.faq-question h3');
+        const answerEl = item.querySelector('.faq-answer p');
+        if (questionEl && answerEl) {
+            faqList.push({
+                "@type": "Question",
+                "name": questionEl.textContent,
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": answerEl.textContent
+                }
+            });
+        }
+    });
+
+    const faqSchema = {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": faqList
+    };
+
+    // Inject schemas
+    const script1 = document.createElement('script');
+    script1.type = 'application/ld+json';
+    script1.textContent = JSON.stringify(appointmentSchema);
+    document.head.appendChild(script1);
+
+    if (faqList.length > 0) {
+        const script2 = document.createElement('script');
+        script2.type = 'application/ld+json';
+        script2.textContent = JSON.stringify(faqSchema);
+        document.head.appendChild(script2);
+    }
+}
+
+// Call this in DOMContentLoaded
+document.addEventListener('DOMContentLoaded', function() {
+    // ... existing code ...
+    injectAppointmentSchema(); // Add this line
+});
